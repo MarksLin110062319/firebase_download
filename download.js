@@ -7,7 +7,7 @@ const fs = require('fs'); // 引入 fs 模組
 
 // Firebase 配置
 const firebaseConfig = {
-    apiKey: "AIzaSyDcwfi9b9WRLeTl-z038poGDfJv-J6iKlk",
+  apiKey: "AIzaSyDcwfi9b9WRLeTl-z038poGDfJv-J6iKlk",
   authDomain: "apphtml-ce846.firebaseapp.com",
   databaseURL: "https://apphtml-ce846-default-rtdb.firebaseio.com",
   projectId: "apphtml-ce846",
