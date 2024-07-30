@@ -7,12 +7,14 @@ const fs = require('fs'); // 引入 fs 模組
 
 // Firebase 配置
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDcwfi9b9WRLeTl-z038poGDfJv-J6iKlk",
+  authDomain: "apphtml-ce846.firebaseapp.com",
+  databaseURL: "https://apphtml-ce846-default-rtdb.firebaseio.com",
+  projectId: "apphtml-ce846",
+  storageBucket: "apphtml-ce846.appspot.com",
+  messagingSenderId: "362316338686",
+  appId: "1:362316338686:web:b1bf51c01f2ad90827dcaf",
+  measurementId: "G-XXJMYK0P70"
 };
 
 // 初始化 Firebase
