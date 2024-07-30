@@ -2,17 +2,17 @@
 
 const { initializeApp } = require('firebase/app');
 const { getStorage, ref, getDownloadURL } = require('firebase/storage');
+const axios = require('axios'); // 引入 axios
+const fs = require('fs'); // 引入 fs 模組
 
 // Firebase 配置
 const firebaseConfig = {
-    apiKey: "AIzaSyDcwfi9b9WRLeTl-z038poGDfJv-J6iKlk",
-  authDomain: "apphtml-ce846.firebaseapp.com",
-  databaseURL: "https://apphtml-ce846-default-rtdb.firebaseio.com",
-  projectId: "apphtml-ce846",
-  storageBucket: "apphtml-ce846.appspot.com",
-  messagingSenderId: "362316338686",
-  appId: "1:362316338686:web:b1bf51c01f2ad90827dcaf",
-  measurementId: "G-XXJMYK0P70"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
 // 初始化 Firebase
@@ -32,7 +32,22 @@ const downloadFile = (filePath) => {
     getDownloadURL(fileRef)
         .then((url) => {
             console.log('檔案下載連結:', url);
-            // 在這裡添加下載檔案的邏輯，例如使用 axios 進行下載
+            // 使用 axios 下載檔案
+            return axios({
+                method: 'GET',
+                url: url,
+                responseType: 'stream' // 設定響應類型為流
+            });
+        })
+        .then(response => {
+            const writer = fs.createWriteStream(filePath.split('/').pop()); // 使用檔名進行存檔
+            response.data.pipe(writer); // 將下載的數據寫入文件
+            writer.on('finish', () => {
+                console.log('檔案下載完成！');
+            });
+            writer.on('error', (error) => {
+                console.error('檔案下載錯誤:', error);
+            });
         })
         .catch((error) => {
             console.error('下載檔案失敗:', error);
